@@ -1,0 +1,6 @@
+.DS_Store
+*.pem
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace

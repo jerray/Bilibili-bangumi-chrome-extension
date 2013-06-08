@@ -1,0 +1,50 @@
+<!--
+ - Copyright 2013 7lemon (https://github.com/7lemon)
+ -
+ - This file is part of Bilibili-bangumi-chrome-extension
+ - 
+ - Bilibili-bangumi-chrome-extension is free software: you can 
+ - redistribute it and/or modify it under the terms of the GNU General 
+ - Public License as published by the Free Software Foundation, either
+ - version 3 of the License, or (at your option) any later version.
+ - 
+ - Bilibili-bangumi-chrome-extension is distributed in the hope that
+ - it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+ - warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ - GNU General Public License for more details.
+ - 
+ - You should have received a copy of the GNU General Public License along
+ - with Bilibili-bangumi-chrome-extension. If not, see <http://www.gnu.org/licenses/>.
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>bilibili新番组</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/framework.js"></script>
+    <script src="js/home.js"></script>
+  </head>
+  <body>
+    <header>
+      <div id="setting"><a href="options.html" target="_blank"><i class="icon-cog"></i> 设置</a></div>
+      <h1><a href="http://www.bilibili.tv/" target="_blank"><img src="img/mini-logo.gif" /></a>新番组</h1>
+    </header>
+
+    <div id="follow" class="block" style="display:none;">
+      <h2>追番</h2>
+      <ul id="follow-list" class="list">
+      </ul>
+    </div>
+
+
+    <div id="update" class="block" style="display:none;">
+      <h2>最近更新</h2>
+      <ul id="update-list" class="list">
+      </ul>
+    </div>
+  </body>
+</html>

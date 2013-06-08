@@ -1,0 +1,46 @@
+/**
+ * Copyright 2013 7lemon (https://github.com/7lemon)
+ *
+ * This file is part of Bilibili-bangumi-chrome-extension
+ * 
+ * Bilibili-bangumi-chrome-extension is free software: you can 
+ * redistribute it and/or modify it under the terms of the GNU General 
+ * Public License as published by the Free Software Foundation, either
+ * version 3 of the License, or (at your option) any later version.
+ * 
+ * Bilibili-bangumi-chrome-extension is distributed in the hope that
+ * it will be useful, but WITHOUT ANY WARRANTY; without even the implied 
+ * warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along
+ * with Bilibili-bangumi-chrome-extension. If not, see <http://www.gnu.org/licenses/>.
+ */
+{
+  "manifest_version": 2,
+
+  "name": "bilibili新番组",
+  "description": "自动检查Bilibili新番",
+  "version": "1.0",
+
+  "permissions": [
+    "storage",
+    "notifications",
+    "*://*.bilibili.tv/"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "options_page": "options.html"
+  },
+  "icons": {
+    "128": "icon.png"
+  },
+  "web_accessible_resources": [
+    "icon.png"
+  ],
+  "background": {
+    "persistent": false,
+    "page": "background.html"
+  }
+}
