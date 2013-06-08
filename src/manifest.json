@@ -40,7 +40,6 @@
     "icon.png"
   ],
   "background": {
-    "persistent": false,
     "page": "background.html"
   }
 }

@@ -66,18 +66,19 @@ Cron.prototype.run = function() {
 	var _this = this;
 	this.initLocalStorage();
 	function exec() {
-		_this._model.download();
-		_this._model.reloadConfig(function(){
-			chrome.storage.local.get('rss', function(data){
-				if (data.rss !== undefined) {
-					var xml = data.rss;
-				} else {
-					_this._model.download();
-					return false;
-				}
-				_this.parse(xml);
-			});
-		});
+		_this._model.download(function(){
+		    _this._model.reloadConfig(function(){
+		    	chrome.storage.local.get('rss', function(data){
+		    		if (data.rss !== undefined) {
+		    			var xml = data.rss;
+		    		} else {
+		    			_this._model.download();
+		    			return false;
+		    		}
+		    		_this.parse(xml);
+		    	});
+		    });
+        });
 		setTimeout(exec, _this._interval);
 	}
 	exec();

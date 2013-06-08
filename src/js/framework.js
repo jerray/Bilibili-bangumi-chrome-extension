@@ -38,11 +38,14 @@ function Model(data) {
  	}
 }
 
-Model.prototype.download = function() {
+Model.prototype.download = function(callback) {
 	var req = new XMLHttpRequest();
 	req.open("GET", this._rss);
 	req.onload = function(e) {
-		chrome.storage.local.set({'rss': e.target.responseText});
+        if (callback === undefined) {
+            callback = function(){};
+        }
+		chrome.storage.local.set({'rss': e.target.responseText}, callback);
 	};
 	req.send();
 }
