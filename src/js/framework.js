@@ -42,9 +42,9 @@ Model.prototype.download = function(callback) {
 	var req = new XMLHttpRequest();
 	req.open("GET", this._rss);
 	req.onload = function(e) {
-        if (callback === undefined) {
-            callback = function(){};
-        }
+		if (callback === undefined) {
+			callback = function(){};
+		}
 		chrome.storage.local.set({'rss': e.target.responseText}, callback);
 	};
 	req.send();
@@ -166,12 +166,8 @@ View.prototype.showHome = function(xmlDoc) {
 		}
 	}
 	records = this._model.getRecords();
-	while (records.unread.length > 0) {
-		var link = records.unread.pop();
-		if (records.read.indexOf(link) < 0) {
-			records.read.push(link);
-		}
-	}
+	records.read = records.read.concat(records.unread);
+	records.unread = [];
 	this._model.setRecords(records);
 	this._model.setUpdateNumber(records.unread.length);
 }
@@ -235,8 +231,7 @@ Controller.prototype.home = function() {
 		if (data.rss !== undefined) {
 			var xml = data.rss;
 		} else {
-			_this._model.download();
-			return _this.load();
+			return _this._model.download(_this.home);
 		}
 		_this._view.showHome(xml);
 	});
