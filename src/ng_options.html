@@ -17,34 +17,36 @@
  - with Bilibili-bangumi-chrome-extension. If not, see <http://www.gnu.org/licenses/>.
 -->
 <!doctype html>
-<html>
+<html ng-app="bilibili" ng-csp>
   <head>
     <meta charset="utf-8">
-    <title>bilibili新番组</title>
+    <title>bilibili新番组 设置页面</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+
+    <script src="js/lodash.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/framework.js"></script>
-    <script src="js/home.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
   </head>
-  <body>
-    <header>
-      <div id="setting"><a href="options.html" target="_blank"><i class="icon-cog"></i> 设置</a></div>
-      <h1><a href="http://www.bilibili.tv/" target="_blank"><img src="img/mini-logo.gif" /></a>新番组</h1>
-    </header>
+  <body ng-controller="option">
+    <div id="wrapper">
+      <header>
+        <h1><a href="http://www.bilibili.tv/" target="_blank"><img src="img/mini-logo.gif" /></a>新番组插件设置</h1>
+      </header>
 
-    <div id="follow" class="block" style="display:none;">
-      <h2>追番</h2>
-      <ul id="follow-list" class="list">
-      </ul>
-    </div>
-
-
-    <div id="update" class="block" style="display:none;">
-      <h2>最近更新</h2>
-      <ul id="update-list" class="list">
-      </ul>
+      <div id="follow">
+        <h2>追番关键词</h2>
+        <ul class="list" id="follow-list">
+          <li class="keyword" ng-repeat="keyword in keywords">
+            <input type="text" name="key[]" class="model" ng-model="keyword.word">
+            <button class="btn btn-mini btn-danger del" type="button" ng-click="removeKeyword(keyword.id)">移除</button>
+          </li>
+        </ul>
+        <button class="btn btn-primary" id="add" type="button" ng-click="addKeyword()">添加</button>
+        <button class="btn btn-success" id="save" type="button" ng-click="save()">保存</button>
+      </div>
     </div>
   </body>
 </html>

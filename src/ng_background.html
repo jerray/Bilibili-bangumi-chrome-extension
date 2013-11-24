@@ -16,6 +16,17 @@
  - You should have received a copy of the GNU General Public License along
  - with Bilibili-bangumi-chrome-extension. If not, see <http://www.gnu.org/licenses/>.
 -->
-<script src="js/jquery.min.js"></script>
-<script src="js/framework.js"></script>
-<script src="js/background.js"></script>
+<!doctype html>
+<html ng-app="bilibili" ng-csp>
+  <head>
+    <meta charset="utf-8">
+    <title>bilibili新番组 后台页面</title>
+
+    <script src="js/lodash.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-controller="background">
+  </body>
+</html>

@@ -17,32 +17,43 @@
  - with Bilibili-bangumi-chrome-extension. If not, see <http://www.gnu.org/licenses/>.
 -->
 <!doctype html>
-<html>
+<html ng-app="bilibili" ng-csp>
   <head>
     <meta charset="utf-8">
-    <title>bilibili新番组 设置页面</title>
+    <title>bilibili新番组</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+
+    <script src="js/lodash.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/framework.js"></script>
-    <script src="js/options.js"></script>
-  </head>
-  <body>
-    <div id="wrapper">
-      <header>
-        <h1><a href="http://www.bilibili.tv/" target="_blank"><img src="img/mini-logo.gif" /></a>新番组插件设置</h1>
-      </header>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
 
-      <div id="follow">
-        <h2>追番关键词</h2>
-        <ul class="list" id="follow-list">
-          <li id="keyword" class="keyword"><input type="text" name="key[]" class="model">
-            <button class="btn btn-mini btn-danger del" type="button" style="display:none;">移除</button>
-          </li>
-        </ul>
-        <button class="btn btn-primary" id="save" type="button">保存</button>
-      </div>
+  </head>
+  <body ng-controller="list">
+    <header>
+      <div id="setting"><a href="ng_options.html" target="_blank"><i class="icon-cog"></i> 设置</a></div>
+      <h1><a href="http://www.bilibili.tv/" target="_blank"><img src="img/mini-logo.gif" /></a>{{title}}</h1>
+      <input type="text" ng-model="query" placeholder="搜索关键字" />
+    </header>
+
+    <div id="follow" class="block" ng-if="follow.length">
+      <h2>追番</h2>
+      <ul id="follow-list" class="list">
+        <li ng-repeat="item in follow">
+          <a href="{{item.link}}" target="_blank">{{item.title}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="update" class="block" ng-if="update.length">
+      <h2>最近更新</h2>
+      <ul id="update-list" class="list">
+        <li ng-repeat="item in update | filter: query">
+          <a href="{{item.link}}" target="_blank">{{item.title}}</a>
+        </li>
+      </ul>
     </div>
   </body>
 </html>
